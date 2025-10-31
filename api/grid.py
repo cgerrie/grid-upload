@@ -54,6 +54,7 @@ def add_grid_to_image(image_bytes, line_width, line_space):
                         row[pixel_x * 4 + 3] = 255
     
     output = io.BytesIO()
+    metadata.pop("physical")
     writer = png.Writer(width=width, height=height, **metadata)
     writer.write(output, pixel_data)
     return output.getvalue()
